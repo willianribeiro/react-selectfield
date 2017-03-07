@@ -8,7 +8,7 @@ import SelectField from 'components/SelectField'
 class App extends Component {
   render () {
     return (
-      <SelectField/>
+      <SelectField />
     )
   }
 }

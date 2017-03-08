@@ -2,12 +2,75 @@
 
 }
 
-  .select-field__input {}
+  .select-field__display {
+    position: relative;
+    height: 40px;
+  }
 
-  .select-field__input-label {}
+  .select-field__display-label {
+    display: none;
+  }
 
-  .select-field__input-field {}
+  .select-field__display-placeholder {
+    position: absolute;
+    font-size: 14px;
+    top: 20px;
+    left: 8px;
+    cursor: pointer;
+    transition: top .1s ease;
+  }
 
-  .select-field__menu {}
+  .select-field__display-input {
+    height: 100%;
+  }
 
-  .select-field__menu-item {}
+    .select-field__display-input input {
+      width: 100%;
+      height: 100%;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+  .select-field__options {
+    display: none;
+  }
+
+    .select-field__option {
+      padding: 8px;
+      cursor: pointer;
+    }
+      .select-field__option.is-selected {
+        background-color: #ddd;
+      }
+
+      .select-field__option:hover {
+        background-color: #d7d7d7;
+      }
+
+
+/* STATES - OPEN */
+.select-field.is-opened {}
+
+  .select-field.is-opened .select-field__options {
+    display: block;
+  }
+
+
+/* STATES - SELECTED */
+.select-field.is-selected {}
+
+  .select-field.is-selected .select-field__display-placeholder {
+    top: 4px;
+  }
+
+
+/* RESET CSS */
+body {
+  font-family: sans-serif;
+}
+
+ul {
+  list-style: none;
+}

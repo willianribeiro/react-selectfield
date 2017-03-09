@@ -1,8 +1,37 @@
 'use strict'
 
 import React from 'react'
+import ReactDOM from 'react-dom'
 
 import './SelectField.css'
+
+const events = {
+  pauseEvent (event) {
+    event.stopPropagation()
+    event.preventDefault()
+  },
+
+  addEventsToDocument (eventMap) {
+    Object.keys(eventMap).forEach((key) => {
+      document.addEventListener(key, eventMap[key], false)
+    })
+  },
+
+  removeEventsFromDocument (eventMap) {
+    Object.keys(eventMap).forEach((key) => {
+      document.removeEventListener(key, eventMap[key], false)
+    })
+  },
+
+  targetIsDescendant (event, parent) {
+    let node = event.target
+    while (node !== null) {
+      if (node === parent) return true
+      node = node.parentNode
+    }
+    return false
+  }
+}
 
 class SelectField extends React.Component {
   constructor () {
@@ -12,30 +41,61 @@ class SelectField extends React.Component {
     }
 
     this.toggle = this.toggle.bind(this)
-    this.open = this.open.bind(this)
     this.close = this.close.bind(this)
+    this.handleDocumentClick = this.handleDocumentClick.bind(this)
+    this.getDocumentEvents = this.getDocumentEvents.bind(this)
   }
 
   toggle () {
     this.setState({isOpened: !this.state.isOpened})
   }
 
-  open () {
-    this.setState({isOpened: true})
-  }
-
   close () {
     this.setState({isOpened: false})
   }
 
-  componentDidUpdate () {
+  setSelected (selected) {
+    this.input.value = selected
+  }
+
+  handleDocumentClick (event) {
+    if (this.state.isOpened && !events.targetIsDescendant(event, ReactDOM.findDOMNode(this))) {
+      this.setState({ isOpened: false })
+    }
+  }
+
+  getDocumentEvents () {
+    return {
+      click: this.handleDocumentClick,
+      touchend: this.handleDocumentClick
+    }
+  }
+
+  componentWillUpdate (nextProps, nextState) {
+    if (!this.state.isOpened && nextState.isOpened) {
+      events.addEventsToDocument(this.getDocumentEvents())
+    }
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    if (prevState.isOpened && !this.state.isOpened) {
+      events.removeEventsFromDocument(this.getDocumentEvents())
+    }
+  }
+
+  componentWillUnmount () {
     if (this.state.isOpened) {
-      this.display.focus()
+      events.removeEventsFromDocument(this.getDocumentEvents())
     }
   }
 
   render () {
-    let {className, source} = this.props
+    let {
+      className,
+      source,
+      value,
+      onChange
+    } = this.props
 
     className = className ? `${className} select-field` : 'select-field'
     className += this.state.isOpened ? ' is-opened' : ''
@@ -45,7 +105,6 @@ class SelectField extends React.Component {
         <div
           className='select-field__display'
           onClick={this.toggle}
-          onBlur={this.close}
           tabIndex='-1'
           ref={(display) => { this.display = display }}>
           <div className='select-field__display-placeholder'>
@@ -55,7 +114,13 @@ class SelectField extends React.Component {
             Opção selecionada
           </div>
           <div className='select-field__display-input'>
-            <input type='text' readOnly />
+            <input
+              readOnly
+              type='text'
+              value={value}
+              onChange={onChange}
+              ref={(input) => { this.input = input }}
+            />
           </div>
         </div>
 
@@ -64,12 +129,11 @@ class SelectField extends React.Component {
             source.map(item => {
               let classNameItem
               classNameItem = 'select-field__option'
-              classNameItem += item.isSelected ? ' is-selected' : ''
+              classNameItem += item.value === value ? ' is-selected' : ''
 
               return (
                 <li
                   key={item.value}
-                  value={item.value}
                   className={classNameItem}>
                   {item.label}
                 </li>

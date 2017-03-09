@@ -12,10 +12,26 @@ class SelectField extends React.Component {
     }
 
     this.toggle = this.toggle.bind(this)
+    this.open = this.open.bind(this)
+    this.close = this.close.bind(this)
   }
 
   toggle () {
     this.setState({isOpened: !this.state.isOpened})
+  }
+
+  open () {
+    this.setState({isOpened: true})
+  }
+
+  close () {
+    this.setState({isOpened: false})
+  }
+
+  componentDidUpdate () {
+    if (this.state.isOpened) {
+      this.display.focus()
+    }
   }
 
   render () {
@@ -29,7 +45,9 @@ class SelectField extends React.Component {
         <div
           className='select-field__display'
           onClick={this.toggle}
-          onBlur={this.toggle}>
+          onBlur={this.close}
+          tabIndex='-1'
+          ref={(display) => { this.display = display }}>
           <div className='select-field__display-placeholder'>
             Selecione uma opção...
           </div>

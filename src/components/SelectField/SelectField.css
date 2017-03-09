@@ -5,6 +5,7 @@
   .select-field__display {
     position: relative;
     height: 40px;
+    outline: none;
   }
 
   .select-field__display-label {
@@ -22,6 +23,7 @@
 
   .select-field__display-input {
     height: 100%;
+    display: none;
   }
 
     .select-field__display-input input {

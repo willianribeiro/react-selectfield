@@ -1,4 +1,22 @@
 {
+  "name": "react-selectfield",
+  "version": "0.0.1",
+  "description": "A React Select and MultiSelect component (in progress).",
+  "repository": {
+    "type": "git",
+    "url": "git+git@github.com:willianribeiro/react-selectfield.git"
+  },
+  "keywords": [
+    "react",
+    "select",
+    "selectfield",
+    "multiselect"
+  ],
+  "author": "Willian Ribeiro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/willianribeiro/react-selectfield/issues"
+  },
   "scripts": {
     "start": "webpack-dashboard -- node server.js",
     "test": "jest --coverage",

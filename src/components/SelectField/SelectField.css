@@ -56,6 +56,11 @@
 
 .select-field__options {
   display: none;
+  margin-top: 4px;
+  border-radius: 3px;
+  box-shadow:
+    0 1.5px 4px rgba(0, 0, 0, 0.24),
+    0 1.5px 6px rgba(0, 0, 0, 0.12);
 }
 
 .select-field__option {

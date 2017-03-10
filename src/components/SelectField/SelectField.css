@@ -22,6 +22,12 @@
   transition: bottom .1s ease, font-size .1s ease;
 }
 
+.select-field__display-caret {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
 .select-field__display,
 .select-field__display-placeholder {
   padding: 0;

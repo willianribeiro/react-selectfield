@@ -37,13 +37,15 @@ class SelectField extends React.Component {
   constructor () {
     super()
     this.state = {
-      isOpened: false
+      isOpened: false,
+      selected: ''
     }
 
     this.toggle = this.toggle.bind(this)
     this.close = this.close.bind(this)
     this.handleDocumentClick = this.handleDocumentClick.bind(this)
     this.getDocumentEvents = this.getDocumentEvents.bind(this)
+    this.getLabel = this.getLabel.bind(this)
   }
 
   toggle () {
@@ -54,8 +56,22 @@ class SelectField extends React.Component {
     this.setState({isOpened: false})
   }
 
-  setSelected (selected) {
-    this.input.value = selected
+  handleOptionClick (item) {
+    this.setState(
+      {selected: item},
+      this.handleOptionSelected.bind(this, item)
+    )
+  }
+
+  handleOptionSelected (item) {
+    this.props.onChange(item.value)
+    this.close()
+  }
+
+  getLabel () {
+    if (this.state.selected) {
+      return this.state.selected.label
+    }
   }
 
   handleDocumentClick (event) {
@@ -94,11 +110,12 @@ class SelectField extends React.Component {
       className,
       source,
       value,
-      onChange
+      placeholder
     } = this.props
 
     className = className ? `${className} select-field` : 'select-field'
     className += this.state.isOpened ? ' is-opened' : ''
+    className += this.state.selected ? ' is-selected' : ''
 
     return (
       <div className={className}>
@@ -108,17 +125,16 @@ class SelectField extends React.Component {
           tabIndex='-1'
           ref={(display) => { this.display = display }}>
           <div className='select-field__display-placeholder'>
-            Selecione uma opção...
+            {placeholder}
           </div>
           <div className='select-field__display-label'>
-            Opção selecionada
+            {this.getLabel()}
           </div>
           <div className='select-field__display-input'>
             <input
               readOnly
               type='text'
-              value={value}
-              onChange={onChange}
+              value={this.state.selected}
               ref={(input) => { this.input = input }}
             />
           </div>
@@ -134,7 +150,8 @@ class SelectField extends React.Component {
               return (
                 <li
                   key={item.value}
-                  className={classNameItem}>
+                  className={classNameItem}
+                  onClick={this.handleOptionClick.bind(this, item)}>
                   {item.label}
                 </li>
               )

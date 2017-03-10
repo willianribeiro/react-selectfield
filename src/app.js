@@ -6,9 +6,12 @@ import './css/style.css'
 import SelectField from 'components/SelectField'
 
 const options = [
-  {label: 'Option 1', value: 1},
-  {label: 'Option 2', value: 2},
-  {label: 'Option 3', value: 3}
+  {label: 'Facebook', value: 'FACEBOOK'},
+  {label: 'Twitter', value: 'TWITTER'},
+  {label: 'Google', value: 'GOOGLE'},
+  {label: 'Instagram', value: 'INSTAGRAM'},
+  {label: 'Pinterest', value: 'PINTEREST'},
+  {label: 'Tumblr', value: 'TUMBLR'}
 ]
 
 class App extends Component {
@@ -19,8 +22,8 @@ class App extends Component {
     }
   }
 
-  handleChange (event) {
-    this.setState({selected: event.target.value})
+  handleChange (value) {
+    this.setState({selected: value})
   }
 
   render () {
@@ -28,6 +31,7 @@ class App extends Component {
       <div style={{maxWidth: '300px', margin: '50px auto'}}>
         <SelectField
           className='my-custom-css'
+          placeholder={'Social Networking'}
           value={this.state.selected}
           source={options}
           onChange={this.handleChange.bind(this)}

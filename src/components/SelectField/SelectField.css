@@ -8,6 +8,7 @@
   height: 40px;
   border-bottom: 1px solid #383838;
   outline: none;
+  cursor: pointer;
 }
 
 .select-field__display-label {
@@ -18,7 +19,6 @@
   position: absolute;
   left: 0;
   right: 0;
-  cursor: pointer;
   transition: bottom .1s ease, font-size .1s ease;
 }
 

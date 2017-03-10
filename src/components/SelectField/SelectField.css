@@ -1,5 +1,5 @@
 .select-field {
-
+  user-select: none;
 }
 
 .select-field__display {
@@ -19,7 +19,9 @@
   position: absolute;
   left: 0;
   right: 0;
-  transition: bottom .1s ease, font-size .1s ease;
+  transition:
+    bottom .1s ease,
+    font-size .1s ease;
 }
 
 .select-field__display-caret {

@@ -24,10 +24,23 @@
     font-size .1s ease;
 }
 
-.select-field__display-caret {
+.select-field__display-caret,
+.select-field__display-clear {
   position: absolute;
   right: 0;
+}
+
+.select-field__display-caret {
   bottom: 0;
+}
+
+.select-field__display-clear {
+  bottom: 4px;
+}
+
+.select-field__display-clear:hover {
+  background: #ddd;
+  border-radius: 50%;
 }
 
 .select-field__display,

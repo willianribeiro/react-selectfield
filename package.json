@@ -17,6 +17,7 @@
   "bugs": {
     "url": "https://github.com/willianribeiro/react-selectfield/issues"
   },
+  "main": "src/components/SelectField/index.js",
   "scripts": {
     "start": "webpack-dashboard -- node server.js",
     "test": "jest --coverage",

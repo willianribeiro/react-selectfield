@@ -1,6 +1,11 @@
 # SelectField
 
-Better documentation coming soon.
+## DISCLAIMER
+React SelectField is still in development, it's not ready to use in production.
+
+
+![image](https://cloud.githubusercontent.com/assets/3102551/23927387/255ffae6-08f8-11e7-8977-b480e45bfe63.png)
+
 
 
 ```

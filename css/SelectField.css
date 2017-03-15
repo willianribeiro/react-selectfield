@@ -70,7 +70,6 @@ ul {
   position: absolute;
   bottom: 4px;
   width: calc(100% - 24px);
-  padding-right: 24px;
   font-size: 16px;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -128,4 +127,5 @@ ul {
 .select-field.is-selected .select-field__display-placeholder {
   bottom: 24px;
   font-size: 12px;
+  width: 100%;
 }

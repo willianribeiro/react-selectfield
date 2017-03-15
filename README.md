@@ -6,7 +6,9 @@ React SelectField is still in development, it's not ready to use in production.
 
 ![react-selectfield](https://cloud.githubusercontent.com/assets/3102551/23927439/790f1852-08f8-11e7-96e1-0e2c383d0414.gif)
 
+## DEMO
 
+https://willianribeiro.github.io/react-selectfield
 
 ```
 import React, { Component } from 'react'

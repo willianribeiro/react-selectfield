@@ -1,6 +1,6 @@
 {
   "name": "react-selectfield",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A React Select and MultiSelect component (in progress).",
   "repository": {
     "type": "git",

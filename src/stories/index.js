@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 import SelectField from '../components/SelectField';
+import '../../css/SelectField.css';
 
 class SelectFieldWrapper extends React.Component {
   constructor () {

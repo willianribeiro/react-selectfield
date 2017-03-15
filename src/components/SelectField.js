@@ -3,8 +3,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import './SelectField.css'
-
 const events = {
   pauseEvent (event) {
     event.stopPropagation()

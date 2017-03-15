@@ -1,3 +1,20 @@
+/* RESET CSS */
+body {
+  font-family: sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+
+/* COMPONENT */
 .select-field {
   user-select: none;
 }
@@ -111,14 +128,4 @@
 .select-field.is-selected .select-field__display-placeholder {
   bottom: 24px;
   font-size: 12px;
-}
-
-
-/* RESET CSS */
-body {
-  font-family: sans-serif;
-}
-
-ul {
-  list-style: none;
 }
